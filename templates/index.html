@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medical Premium Predictor</title>
+  <style>
+    /* === Reset === */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0a0a0a;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 50px 55px;
+      width: 100%;
+      max-width: 700px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 35px;
+      color: #ffffff;
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 25px;
+    }
+
+    input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      padding: 16px 18px;
+      color: #fff;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    input:focus {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.02);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+      outline: none;
+    }
+
+    button {
+      grid-column: span 2;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      border-radius: 14px;
+      padding: 16px;
+      font-size: 17px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+    }
+
+    button:hover {
+      background: #000000;
+      color: #ffffff;
+      border: 1px solid #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+    h3 {
+      text-align: center;
+      margin-top: 30px;
+      color: #ffffff;
+      font-weight: 400;
+      font-size: 1.15rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    @media (max-width: 650px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      .container {
+        padding: 35px;
+      }
+
+      input, button {
+        font-size: 15px;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>💡 Medical Premium Price Predictor</h2>
+    <form action="/predict" method="post">
+      <input type="number" name="Age" placeholder="Age" required>
+      <input type="number" name="Diabetes" placeholder="Diabetes (0 or 1)" required>
+      <input type="number" name="BloodPressureProblems" placeholder="Blood Pressure Problems (0 or 1)" required>
+      <input type="number" name="AnyTransplants" placeholder="Any Transplants (0 or 1)" required>
+      <input type="number" name="AnyChronicDiseases" placeholder="Any Chronic Diseases (0 or 1)" required>
+      <input type="number" name="Height" placeholder="Height (cm)" required>
+      <input type="number" name="Weight" placeholder="Weight (kg)" required>
+      <input type="number" name="KnownAllergies" placeholder="Known Allergies (0 or 1)" required>
+      <input type="number" name="HistoryOfCancerInFamily" placeholder="History Of Cancer In Family (0 or 1)" required>
+      <input type="number" name="NumberOfMajorSurgeries" placeholder="Number Of Major Surgeries" required>
+      <button type="submit">Predict Premium</button>
+    </form>
+    {% if prediction_text %}
+      <h3>{{ prediction_text }}</h3>
+    {% endif %}
+  </div>
+</body>
+</html>
