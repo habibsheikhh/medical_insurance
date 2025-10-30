@@ -30,7 +30,7 @@ MEDICALML/
 
 ### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/habibsheikhh/MedicalML.git
+git clone https://github.com/habibsheikhh/medical_insurance.git
 cd MedicalML
 ```
 
